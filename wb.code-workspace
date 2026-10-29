@@ -1,0 +1,40 @@
+{
+  "folders": [
+    { "name": "WB modules (20)", "path": "C:/Odoo/wb/odoo.20" },
+    { "name": "WB tooling",      "path": "C:/Odoo/wb/settings" }
+    { "name": "Odoo 20",         "path": "C:/Odoo/20/odoo/odoo/addons" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "C:/Odoo/20/venv/Scripts/python.exe",
+    "python.analysis.extraPaths": ["C:/Odoo/20/odoo"],
+    "files.exclude":  { "**/__pycache__": true },
+    "search.exclude": { "**/i18n": true }
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "WB 20 – run",
+        "type": "debugpy", "request": "launch",
+        "python": "C:/Odoo/20/venv/Scripts/python.exe",
+        "program": "C:/Odoo/20/odoo-bin",
+        "args": ["-c", "C:/Odoo/20/wb.conf", "--dev=xml"],
+        "console": "integratedTerminal", "justMyCode": false
+      },
+      {
+        "name": "WB 20 – install/update module",
+        "type": "debugpy", "request": "launch",
+        "python": "C:/Odoo/20/venv/Scripts/python.exe",
+        "program": "C:/Odoo/20/odoo-bin",
+        "args": ["-c", "C:/Odoo/20/wb.conf", "-d", "${input:db}",
+                 "${input:mode}", "${input:module}", "--stop-after-init"],
+        "console": "integratedTerminal", "justMyCode": false
+      }
+    ],
+    "inputs": [
+      { "id": "db", "type": "promptString", "description": "Database", "default": "wb_dev" },
+      { "id": "mode", "type": "pickString", "description": "Install (-i) or update (-u)", "options": ["-i", "-u"], "default": "-u" },
+      { "id": "module", "type": "promptString", "description": "Module(s), comma-separated" }
+    ]
+  }
+}

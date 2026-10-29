@@ -1,0 +1,7 @@
+﻿{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "WB 20 – run Odoo",   "type": "shell", "command": "C:/Odoo/wb/settings/.vscode/run_odoo.bat",       "problemMatcher": [] },
+    { "label": "WB 20 – Odoo shell", "type": "shell", "command": "C:/Odoo/wb/settings/.vscode/run_odoo_shell.bat", "problemMatcher": [] }
+  ]
+}
